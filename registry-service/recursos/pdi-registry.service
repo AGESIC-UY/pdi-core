@@ -1,0 +1,14 @@
+# system.d configuration file
+
+[Unit]
+Description=Servicio de registro y descubrimiento
+After=syslog.target
+
+[Service]
+User=root
+Environment="SPRING_PROFILES_ACTIVE=__PROFILE__"
+ExecStart=/bin/bash /opt/pdi/pdi-registry-service.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

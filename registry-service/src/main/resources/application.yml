@@ -1,0 +1,175 @@
+server:
+  port: 8761
+
+spring:
+  jmx:
+    default-domain: pdi-registry-service
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+
+---
+spring:
+  profiles: desa1
+
+eureka:
+   datacenter: ek-peer1
+   instance:
+      hostname: ek-peer1
+   client:
+      serviceUrl:
+           defaultZone: http://ek-peer2:8762/eureka/
+
+---
+spring:
+  profiles: desa2
+
+server:
+  port: 8762
+
+eureka:
+   datacenter: ek-peer2
+   instance:
+      hostname: ek-peer2
+   client:
+      serviceUrl:
+           defaultZone: http://ek-peer1:8761/eureka/
+
+---
+spring:
+  profiles: qa1
+
+eureka:
+   datacenter: ek-peer1
+   instance:
+      hostname: ek-peer1
+   client:
+      serviceUrl:
+           defaultZone: http://ek-peer2:8762/eureka/
+
+---
+spring:
+  profiles: qa2
+
+server:
+  port: 8762
+
+eureka:
+   datacenter: ek-peer2
+   instance:
+      hostname: ek-peer2
+   client:
+      serviceUrl:
+           defaultZone: http://ek-peer1:8761/eureka/
+
+---
+spring:
+  profiles: uat1
+
+eureka:
+   datacenter: ek-peer1
+   instance:
+      hostname: ek-peer1
+   client:
+      serviceUrl:
+           defaultZone: http://ek-peer2:8762/eureka/
+
+---
+spring:
+  profiles: uat2
+
+server:
+  port: 8762
+
+eureka:
+   datacenter: ek-peer2
+   instance:
+      hostname: ek-peer2
+   client:
+      serviceUrl:
+           defaultZone: http://ek-peer1:8761/eureka/
+
+---
+spring:
+  profiles: prep1
+
+eureka:
+   datacenter: ek-peer1
+   instance:
+      hostname: ek-peer1
+   client:
+      serviceUrl:
+           defaultZone: http://ek-peer2:8762/eureka/
+
+---
+spring:
+  profiles: prep2
+
+server:
+  port: 8762
+
+eureka:
+   datacenter: ek-peer2
+   instance:
+      hostname: ek-peer2
+   client:
+      serviceUrl:
+           defaultZone: http://ek-peer1:8761/eureka/
+
+---
+spring:
+  profiles: prod1
+
+eureka:
+   datacenter: ek-peer1
+   instance:
+      hostname: ek-peer1
+   client:
+      serviceUrl:
+           defaultZone: http://ek-peer2:8762/eureka/
+
+---
+spring:
+  profiles: prod2
+
+server:
+  port: 8762
+
+eureka:
+   datacenter: ek-peer2
+   instance:
+      hostname: ek-peer2
+   client:
+      serviceUrl:
+           defaultZone: http://ek-peer1:8761/eureka/
+
+---
+spring:
+  profiles: test1
+
+eureka:
+   datacenter: ek-peer1
+   instance:
+      hostname: ek-peer1
+   client:
+      serviceUrl:
+           defaultZone: http://ek-peer2:8762/eureka/
+
+---
+spring:
+  profiles: test2
+
+server:
+  port: 8762
+
+eureka:
+   datacenter: ek-peer2
+   instance:
+      hostname: ek-peer2
+   client:
+      serviceUrl:
+           defaultZone: http://ek-peer1:8761/eureka/

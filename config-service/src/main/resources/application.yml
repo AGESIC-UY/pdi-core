@@ -1,0 +1,187 @@
+server:
+  port: 9000
+
+spring:
+  jmx:
+    default-domain: pdi-config-service
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://{service-name}/AGESIC-PDI/pdi-config.git
+          clone-on-start: true
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    registerWithEureka: true
+
+logging:
+  level:
+    org:
+      springframework: ERROR
+      hibernate: ERROR
+      apache: ERROR
+      eclipse: ERROR
+    com:
+      netflix: ERROR
+      giffing: ERROR
+    uy:
+      gub:
+        agesic: INFO
+
+---
+spring:
+  profiles: desa
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://{service-name}/AGESIC-PDI/pdi-config.git
+          clone-on-start: true
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+      prefer-same-zone-eureka: true
+    region: zone1
+    availability-zones.zone1: 'ek-peer1,ek-peer2'
+    availability-zones.zone2: 'ek-peer2,ek-peer1'
+    serviceUrl:
+      peer1: http://ek-peer1:8761/eureka/
+      peer2: http://ek-peer2:8762/eureka/
+      defaultZone: ${eureka.client.serviceUrl.peer1},${eureka.client.serviceUrl.peer2}
+    registerWithEureka: true
+
+---
+spring:
+  profiles: qa
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://{service-name}/AGESIC-PDI/pdi-config.git
+          clone-on-start: true
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+      prefer-same-zone-eureka: true
+    region: zone1
+    availability-zones.zone1: 'ek-peer1,ek-peer2'
+    availability-zones.zone2: 'ek-peer2,ek-peer1'
+    serviceUrl:
+      peer1: http://ek-peer1:8761/eureka/
+      peer2: http://ek-peer2:8762/eureka/
+      defaultZone: ${eureka.client.serviceUrl.peer1},${eureka.client.serviceUrl.peer2}
+    registerWithEureka: true
+
+---
+spring:
+  profiles: uat
+  cloud:
+    config:
+      server:
+        git:
+          uri: http://{service-name}/plataforma/pdi-config.git
+          username: USUARIO
+          password: CONTRASENA
+          clone-on-start: true
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+      prefer-same-zone-eureka: true
+    region: zone1
+    availability-zones.zone1: 'ek-peer1,ek-peer2'
+    availability-zones.zone2: 'ek-peer2,ek-peer1'
+    serviceUrl:
+      peer1: http://ek-peer1:8761/eureka/
+      peer2: http://ek-peer2:8762/eureka/
+      defaultZone: ${eureka.client.serviceUrl.peer1},${eureka.client.serviceUrl.peer2}
+    registerWithEureka: true
+
+---
+spring:
+  profiles: test
+  cloud:
+    config:
+      server:
+        git:
+          uri: http://{service-name}/plataforma/pdi-config.git
+          username: USUARIO
+          password: CONTRASENA
+          clone-on-start: true
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+      prefer-same-zone-eureka: true
+    region: zone1
+    availability-zones.zone1: 'ek-peer1,ek-peer2'
+    availability-zones.zone2: 'ek-peer2,ek-peer1'
+    serviceUrl:
+      peer1: http://ek-peer1:8761/eureka/
+      peer2: http://ek-peer2:8762/eureka/
+      defaultZone: ${eureka.client.serviceUrl.peer1},${eureka.client.serviceUrl.peer2}
+    registerWithEureka: true
+
+---
+spring:
+  profiles: prep
+  cloud:
+    config:
+      server:
+        git:
+          uri: http://{service-name}/plataforma/pdi-config.git
+          username: USUARIO
+          password: CONTRASENA
+          clone-on-start: true
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+      prefer-same-zone-eureka: true
+    region: zone1
+    availability-zones.zone1: 'ek-peer1,ek-peer2'
+    availability-zones.zone2: 'ek-peer2,ek-peer1'
+    serviceUrl:
+      peer1: http://ek-peer1:8761/eureka/
+      peer2: http://ek-peer2:8762/eureka/
+      defaultZone: ${eureka.client.serviceUrl.peer1},${eureka.client.serviceUrl.peer2}
+    registerWithEureka: true
+
+---
+spring:
+  profiles: prod
+  cloud:
+    config:
+      server:
+        git:
+          uri: http://{service-name}/plataforma/pdi-config.git
+          username: USUARIO
+          password: CONTRASENA
+          clone-on-start: true
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+      prefer-same-zone-eureka: true
+    region: zone1
+    availability-zones.zone1: 'ek-peer1,ek-peer2'
+    availability-zones.zone2: 'ek-peer2,ek-peer1'
+    serviceUrl:
+      peer1: http://ek-peer1:8761/eureka/
+      peer2: http://ek-peer2:8762/eureka/
+      defaultZone: ${eureka.client.serviceUrl.peer1},${eureka.client.serviceUrl.peer2}
+    registerWithEureka: true
+
